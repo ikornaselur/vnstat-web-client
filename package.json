@@ -1,0 +1,16 @@
+{
+  "name": "vnstat-client",
+  "version": "0.0.1",
+  "description": "vnstat report web interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "cache-manager": "^0.11.0",
+    "express": "^4.9.6",
+    "vnstat-dumpdb": "^1.0.2"
+  }
+}
