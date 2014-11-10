@@ -3,12 +3,38 @@
     <title>vnstat web view</title>
     <script src="/angular/angular.js"></script>
     <script src="/js/app.js"></script>
+    <script src="/js/filters.js"></script>
     <script src="/js/factories.js"></script>
     <script src="/js/controllers.js"></script>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body ng-app="vnstatApp">
-<div ng-controller="mainCtrl">
-    <h1>hello {{world}}</h1>
+<div ng-controller="mainCtrl as main">
+    <h1>vnstat</h1>
+    <div ng-repeat="iface in main.stats">
+        <div>Name: {{iface.id}}</div>
+        <div>Total transmitted: {{iface.total | formatGB}} GB</div>
+        <div>
+        <table>
+            <thead>
+            <tr>
+                <td>Date</td>
+                <td>Type</td>
+                <td>Downloaded</td>
+                <td>Total so far</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="day in iface.days" class="type-{{day.type}}">
+                <td><strong>{{day.date | formatDate}}</strong></td>
+                <td>{{day.type}}</td>
+                <td>{{day.tx | formatGB}} GB</td>
+                <td>{{day.totalTxSoFar | formatGB}} GB</td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
